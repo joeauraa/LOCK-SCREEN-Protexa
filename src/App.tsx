@@ -95,7 +95,7 @@ function App() {
         {/* زر Settings يفتح لينك */}
         <button
           onClick={() => {
-            window.location.href = "https://example.com"; // 👈 غير اللينك هنا
+            window.location.href = "https://protexa-main.vercel.app/"; // 👈 غير اللينك هنا
           }}
           className="px-4 py-1 text-xs bg-gray-800 text-white rounded-md hover:bg-black transition flex items-center gap-1 mx-auto"
         >
