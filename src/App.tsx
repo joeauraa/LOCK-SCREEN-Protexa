@@ -4,7 +4,6 @@ import LockScreen from './components/LockScreen';
 
 function App() {
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(() => !localStorage.getItem('lockPassword'));
   const [password, setPassword] = useState(() => localStorage.getItem('lockPassword') || '');
   const [newPassword, setNewPassword] = useState('');
@@ -34,7 +33,7 @@ function App() {
   // شاشة الإعداد لأول مرة
   if (isFirstTime) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-4">
         <div className="w-full max-w-md bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8">
           <h1 className="text-3xl font-bold text-white mb-4 text-center">إعداد الأمان</h1>
 
@@ -43,7 +42,7 @@ function App() {
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             placeholder="أدخل كلمة مرور جديدة"
-            className="w-full px-4 py-3 mb-4 rounded-xl text-center text-white placeholder-blue-200/50 bg-white/10 border border-white/20 focus:outline-none focus:border-blue-400"
+            className="w-full px-4 py-3 mb-4 rounded-xl text-center text-white placeholder-blue-200/50 bg-white/10 border border-white/20 focus:outline-none focus:border-blue-400 transition"
             autoFocus
           />
 
@@ -52,7 +51,7 @@ function App() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="أعد إدخال كلمة المرور"
-            className="w-full px-4 py-3 mb-4 rounded-xl text-center text-white placeholder-blue-200/50 bg-white/10 border border-white/20 focus:outline-none focus:border-blue-400"
+            className="w-full px-4 py-3 mb-4 rounded-xl text-center text-white placeholder-blue-200/50 bg-white/10 border border-white/20 focus:outline-none focus:border-blue-400 transition"
           />
 
           {settingMessage && (
@@ -63,7 +62,7 @@ function App() {
 
           <button
             onClick={handleSavePassword}
-            className="w-full py-3 bg-blue-500 rounded-xl text-white font-semibold"
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl text-white font-semibold shadow-lg hover:from-blue-600 hover:to-blue-700 transition-all"
             disabled={!newPassword || !confirmPassword}
           >
             إعداد كلمة المرور
@@ -82,22 +81,19 @@ function App() {
     );
   }
 
-  // بعد فك القفل → يظهر كلمة صغيرة + زر Settings ينقلك للينك
+  // بعد فك القفل → كلمة صغيرة + زر Settings
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <div className="text-center p-6 bg-white rounded-xl shadow-md border w-fit">
-
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 p-6">
+      <div className="text-center p-6 bg-white rounded-2xl shadow-2xl border border-gray-200 w-fit animate-fadeIn">
         {/* الكلمة الصغيرة */}
-        <p className="text-gray-700 text-sm mb-3">
+        <p className="text-gray-700 text-sm mb-4 font-medium">
           تم فتح القفل بنجاح ✔️
         </p>
 
-        {/* زر Settings يفتح لينك */}
+        {/* زر Settings مع أيقونة */}
         <button
-          onClick={() => {
-            window.location.href = "https://protexa-main.vercel.app/"; // 👈 غير اللينك هنا
-          }}
-          className="px-4 py-1 text-xs bg-gray-800 text-white rounded-md hover:bg-black transition flex items-center gap-1 mx-auto"
+          onClick={() => window.location.href = "https://protexa-main.vercel.app"} // 🔥 غير اللينك هنا
+          className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-xs rounded-md shadow-md hover:from-gray-900 hover:to-black transition-all transform hover:scale-105"
         >
           <Settings className="w-3 h-3" />
           Settings
