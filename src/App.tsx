@@ -80,10 +80,10 @@ function App() {
       />
     );
   }
-
+export default function App() {
   // بعد فك القفل → كلمة صغيرة + زر Settings
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-white p-6">
       <div className="text-center p-6 bg-white rounded-2xl shadow-2xl border border-gray-200 w-fit animate-fadeIn">
         {/* الكلمة الصغيرة */}
         <p className="text-gray-700 text-sm mb-4 font-medium">
@@ -92,7 +92,7 @@ function App() {
 
         {/* زر Settings مع أيقونة */}
         <button
-          onClick={() => window.location.href = "https://protexa-main.vercel.app"} // 🔥 غير اللينك هنا
+          onClick={() => (window.location.href = "https://protexa-main.vercel.app")} // 🔥 غير اللينك هنا
           className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-xs rounded-md shadow-md hover:from-gray-900 hover:to-black transition-all transform hover:scale-105"
         >
           <Settings className="w-3 h-3" />
@@ -102,5 +102,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
