@@ -85,7 +85,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white p-6">
       <div className="text-center p-6 bg-white rounded-2xl shadow-2xl border border-white-200 w-fit animate-fadeIn">
-        <p className="text-gray-700 text-sm mb-4 font-medium">✔️</p>
+        <p className="text-gray-700 text-sm mb-4 font-medium">✔️ UNLOCKED</p>
 
         <button
           onClick={() => (window.location.href = "https://protexa-main.vercel.app")}
